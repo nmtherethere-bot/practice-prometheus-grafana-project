@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 5s
+
+    scrape_configs:
+      - job_name: 'promethes-practice 1'
+        metrics_path: '/actuator/prometheus'
+        static_configs:
+          - targets: ['springboot-app:8080']
+
+      - job_name: 'promethes-practice 2'
+        metrics_path: '/actuator/prometheus'
+        static_configs:
+          - targets: ['practice-prometheus:8081']
+
+      - job_name: 'promethes-grafana-practice 3'
+        metrics_path: '/actuator/prometheus'
+        static_configs:
+          - targets: ['practice-prometheus-grafana:8082']
+    
+      
+
+        
